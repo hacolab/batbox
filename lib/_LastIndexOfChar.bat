@@ -26,5 +26,5 @@ if not "%s%"=="" (
     goto :loop
 )
 REM echo !%3!
-setlocal && set %~3=%ret%
+endlocal && set %~3=%ret%
 exit /b 0

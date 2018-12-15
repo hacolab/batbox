@@ -5,7 +5,7 @@ REM - NAME   ) _TestAssert
 REM - DESC   ) Execute assertion when only debug mode(DEBUG_MODE=1)
 REM -          if !%2!==%3, print OK and errorlevel is 0
 REM -          else, print NG and errorlevel is 1
-REM - USAGE  ) call _TestAssert VarName ExpectVal message
+REM - USAGE  ) call _TestAssert VarName ExpectVal [message]
 REM - IN/OUT )
 REM -  IN   %1  : variable name
 REM -  IN   %2  : expect value
