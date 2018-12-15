@@ -52,9 +52,9 @@ exit /b
 REM Test Helper Functions
 :GetColorName
 setlocal enabledelayedexpansion
-set /a Idx=%1-1
-set /a nameIdx=%Idx%%%8
-set /a modeIdx=%Idx%/8
+set /a idx=%1-1
+set /a nameIdx=%idx%%%8
+set /a modeIdx=%idx%/8
 set colorName=!COLOR_NAME[%nameIdx%]!_!DECO_MODE[%modeIdx%]!
 REM echo %nameIdx%-%modeIdx% : %colorName%
 endlocal && set %2=%colorName%
