@@ -1,15 +1,15 @@
 @echo off
 setlocal enabledelayedexpansion
 REM ----------------------------------------------------------------------
-REM - NAME   ) _DebugEchoV
-REM - DESC   ) Print Variable "Name:Value" when only debug mode(DEBUG_MODE=1)
-REM - USAGE  ) call _DebugEchoV [DebugMsg] VarName
+REM - NAME   ) _TrapVal
+REM - DESC   ) Print Variable "Name:Value" when only debug mode(_DEBUG_MODE_=1)
+REM - USAGE  ) call _TrapVal [message] VarName
 REM - IN/OUT )
 REM -  IN  [%1] : Header message
 REM -  IN   %2  : Variable name
 REM ----------------------------------------------------------------------
-:_DebugEchoV
-if "%DEBUG_MODE%"=="1" (
+:_TrapVal
+if "%_DEBUG_MODE_%"=="%_TRUE_%" (
     if "%~2"=="" (
         echo %1:!%1! >&2
     ) else (

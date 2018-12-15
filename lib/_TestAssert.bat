@@ -13,9 +13,7 @@ REM -  IN  [%3] : test description message
 REM ----------------------------------------------------------------------
 :_TestAssert
 if not "%~3%"=="" (
-    REM call _CEcho "[%~3]" "[%~3]" %_CS_WHITE%
     call _CEcho "[%~3]" %_CS_WHITE%
-    REM echo _CEcho "[%~3]" %_CS_WHITE%
 )
 if "!%~1!"=="%~2" (
     call _CEcho " [OK](%1) EvsA: '%~2' vs '!%~1!'" OK %_CS_GREEN%

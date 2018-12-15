@@ -1,4 +1,4 @@
-# batbox
+# BatBox
 ========
 This is useful Windows *.bat scripts and libraries package.  
 It is useful operate functions for string, array, path, debug, test etc...  
@@ -51,14 +51,17 @@ Our Goal is to say that "That is in this box".
     |   +-- CmdName1.bat.lnk ... symbolic link for CmdName1 main script.
     |   +-- CmdName2.bat.lnk ... symbolic link for CmdName2 main script.
     |   |
-    |   +-- _configs ... if necessary, put commands config file
+    |   +-- _config ... if necessary, put commands config files
+    |   |   |
     |   |   +-- CmdName1/ ... CmdName1 config files directory
     |   |
-    |   +-- _cache ... if necessary, put commands cache file
+    |   +-- _cache ... if necessary, put commands cache files
+    |   |   |
     |   |   +-- CmdName1/ ... CmdName1 cache files directory
     |   |   +-- CmdName2/ ... CmdName2 cache files directory
     |   |
-    |   +-- _temp ... if necessary, put commands tempolary file
+    |   +-- _temp ... if necessary, put commands tempolary files
+    |       |
     |       +-- CmdName2/ ... CmdName2 temp files dirctory
     |
     +-- bin ... if necessary, you can put external commands
