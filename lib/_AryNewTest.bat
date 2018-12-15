@@ -4,10 +4,10 @@ call _InitColors
 
 REM Test Main
 REM ----------------------------------------
-call _NewAry TestAry hello world @batbox %1
+call _AryNew TestAry hello world @batbox %1
 
 call _CEcho "[Made array elements]" %_CS_WHITE%
-call _EchoAry TestAry
+call _AryEcho TestAry
 
 call _TestAssert TestAry[0] "" NewArrayTest
 call _TestAssert TestAry[1] hello 
