@@ -61,7 +61,7 @@ Our Goal is to say that "That is in this box".
     |   +-- _temp ... if necessary, put commands tempolary file
     |       +-- CmdName2/ ... CmdName2 temp files dirctory
     |
-    +-- bin ... you can put an external command if necessary
+    +-- bin ... if necessary, you can put external commands
         +-- ExtCmd1.exe
         +-- ExtCmd2.exe
 ```
@@ -117,12 +117,29 @@ Array has elements and 'Len' property. it is array length
 
 ```
 call _NewAry Ary "Hello" "World"
+call _PushAry Ary "!"
+call _PopAry Ary LastElm
+call _DelAry Ary "Hello" "World"
 
 or
 
+rem _NewAry
 set Ary[1]="Hello"
 set Ary[2]="World"
 set Ary.Len=2
+
+rem _PushAry
+set Ary[3]="!"
+set /a Ary.Len=Ary.Len + 1
+
+rem _PopAry
+set LastElm=!Ary[%Ary.Len%]!
+set Ary[%Ary.Len%]=
+set /a Ary.Len=Ary.Len - 1
+
+rem _DelAry
+for /l %%i in (1, 1, %Ary.Len%) do set Ary[%%i]=
+Ary.Len=
 ```
 
 [use]
@@ -147,3 +164,7 @@ Local Proc TAG  ... :local_goto_tag (use goto)
 Function TAG    ... :CallFuncTag (use call)
 Bat File Name   ... BatName.bat (use call)
 Lib File Name   ... _LibName.bat (must start under score, avoid namespace problems)
+
+
+## The remaining problem for the time being
+Whether standard encoding is sjis or utf8.
