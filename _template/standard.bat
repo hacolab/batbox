@@ -32,7 +32,7 @@ REM ======================================================================
 REM = Initial Process
 REM ======================================================================
 :INIT_PROCESS
-set ERROR_MSG=""
+set ErrMsg=""
 
 
 REM ======================================================================
@@ -53,7 +53,7 @@ if "%ParamTemp:~0,1%"=="/" (
         REM set code page UTF8
         chcp 65001 >nul
     ) else (
-        set ERROR_MSG='%OptType%' is Unknown Option
+        set ErrMsg='%OptType%' is Unknown Option
         goto :ERROR_HELP_EXIT
     )
     shift
@@ -65,13 +65,13 @@ REM ----------------------------------------
 :ANALYZE_PARAMS
 if "%~1"=="" (
     REM no given param
-    set ERROR_MSG=No given parameter
+    set ErrMsg=No given parameter
     goto :ERROR_HELP_EXIT
 ) else (
     REM given param
-    call DebugMsg DebugMsg ParamTemp
-    call AssertNeq AssertNeq ParamTemp OK
-    call AssertEq AssertEq ParamTemp NG
+    call _DebugEchoV DebugMsg ParamTemp
+    call _AssertNeq AssertNeq ParamTemp OK
+    call _AssertEq AssertEq ParamTemp NG
 )
 
 
@@ -79,14 +79,14 @@ REM ======================================================================
 REM = Main Process
 REM ======================================================================
 set ExecCmd[1]=goto :EXIT_SUCCESS
-set ExecCmd[2]=call PrintHelp "%~dpnx0"
-set ExecCmd[3]=call PrintVersion "%~dpnx0"
+set ExecCmd[2]=call _PrintHelp "%~dpnx0"
+set ExecCmd[3]=call _PrintVersion "%~dpnx0"
 :MAIN_PROCESS
 REM  Select menu command
 REM ----------------------------------------
 echo.
 echo Menu) q:Quit   h:Help  v:Vesion
-call AcceptKey qhv ">" Key
+call _AcceptKey qhv ">" Key
 
 REM  Execute selected command
 REM ----------------------------------------
@@ -114,21 +114,21 @@ REM ======================================================================
 REM  Print usage and exit
 REM ----------------------------------------
 :SHOW_HELP
-call PrintHelp "%~dpnx0"
+call _PrintHelp "%~dpnx0"
 goto :EXIT_SUCCESS
 
 REM  Print message and help and exit
 REM ----------------------------------------
 :ERROR_HELP_EXIT
-echo %ERROR_MSG%
+echo %ErrMsg%
 echo.
-call PrintHelp "%~dpnx0"
+call _PrintHelp "%~dpnx0"
 goto :EXIT_FAILD
 
 REM  Print version and exit
 REM ----------------------------------------
 :SHOW_VERSION
-call PrintVersion "%~dpnx0"
+call _PrintVersion "%~dpnx0"
 goto :EXIT_SUCCESS
 
 

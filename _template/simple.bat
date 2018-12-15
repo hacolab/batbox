@@ -17,9 +17,9 @@ REM ###########################################################################
 REM ======================================================================
 REM = Environment Configs
 REM ======================================================================
-set PATH=%~dp0lib;%PATH%
+set PATH=%~dp0..\lib;%PATH%
 set DEBUG_MODE=1
-set ERROR_MSG=""
+set ErrMsg=""
 
 
 REM ======================================================================
@@ -35,7 +35,7 @@ if "%ParamTemp:~0,1%"=="/" (
     if "%OptType%"=="?" (
         goto :SHOW_HELP
     ) else (
-        set ERROR_MSG='%OptType%' is Unknown Option
+        set ErrMsg='%OptType%' is Unknown Option
         goto :SHOW_HELP
     )
     shift
@@ -45,15 +45,12 @@ if "%ParamTemp:~0,1%"=="/" (
 REM  Params
 REM ----------------------------------------
 :ANALYZE_PARAMS
-if "%~1"=="" (
-    REM no given param
-    set ERROR_MSG=No given parameter
-    goto :ERROR_HELP_EXIT
-) else (
+if not "%~1"=="" (
     REM given param
-    call DebugMsg DebugMsg ParamTemp
-    call AssertNeq AssertNeq ParamTemp OK
-    call AssertEq AssertEq ParamTemp NG
+    call _DebugEchoV DebugMsg ParamTemp
+    call _AssertNeq AssertNeq ParamTemp OK
+    call _AssertEq AssertEq ParamTemp NG
+    echo hear:%~dp0
 )
 
 
@@ -77,5 +74,5 @@ REM ======================================================================
 REM  Print usage and exit
 REM ----------------------------------------
 :SHOW_HELP
-call PrintHelp "%~dpnx0"
+call _PrintHelp "%~dpnx0"
 goto :EXIT_SUCCESS

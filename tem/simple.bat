@@ -1,0 +1,1 @@
+D:/coma/go/src/github.com/hacolab/batbox/_template/simple.bat
