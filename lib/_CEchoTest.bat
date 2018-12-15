@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 REM initial defines
-call _InitColor
+call _InitColors
 
 REM Test messages
 set COLOR_NAME[0]=BLACK
