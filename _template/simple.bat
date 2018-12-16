@@ -18,7 +18,9 @@ REM ======================================================================
 REM = Environment Configs
 REM ======================================================================
 set PATH=%~dp0..\lib;%PATH%
-set DEBUG_MODE=1
+
+call _InitBatBox DEBUG_ON COLOR_ON
+
 set ErrMsg=""
 
 
@@ -45,12 +47,24 @@ if "%ParamTemp:~0,1%"=="/" (
 REM  Params
 REM ----------------------------------------
 :ANALYZE_PARAMS
-if not "%~1"=="" (
-    REM given param
-    call _DebugEchoV DebugMsg ParamTemp
-    call _AssertNeq AssertNeq ParamTemp OK
-    call _AssertEq AssertEq ParamTemp NG
-    echo hear:%~dp0
+REM if not "%~1"=="" (
+REM     REM given param
+REM     call _TrapVal YourInputParam ParamTemp
+REM     call _TrapPauseNeq TrapPauseNeq ParamTemp OK
+REM     call _TrapPauseEq TrapPauseEq ParamTemp NG
+REM     REM call _CEcho hear %_CS_BLUE%
+REM )
+REM call _InitColors
+REM call _CEcho "[OK]Hello World" %~1 CS_GREEN
+REM call _CEcho "[OK]Hello World" CS_RED
+REM set param=%~1
+REM call _TestAssert param %~1
+for /f "usebackq tokens=* delims=" %%i in (`dir /s /b lib\*Test.bat`) do (
+    echo ===========================================================
+    echo FILE: %%i
+    echo ===========================================================
+    call %%i
+    echo .
 )
 
 
