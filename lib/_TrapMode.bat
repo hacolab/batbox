@@ -11,6 +11,6 @@ REM ----------------------------------------------------------------------
 if "!%1!"=="%_TRUE_%" (
    set _DEBUG_MODE_=%_TRUE_%
 ) else (
-   set _DEBUG_MODE_=%_TRUE_%
+   set _DEBUG_MODE_=%_FALSE_%
 )
 exit /b

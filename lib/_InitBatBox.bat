@@ -6,8 +6,8 @@ REM ----------------------------------------------------------------------
 IF not "%_INIT_BATBOX_%"=="" exit /b
 
 set _INIT_BATBOX_=1
-set _TRUE_=0
-set _FALSE_=1
+set _TRUE_=1
+set _FALSE_=0
 
 set _DEBUG_MODE_=%_FALSE_%
 
@@ -15,7 +15,7 @@ for %%a in (%*) do (
     if "%%a"=="COLOR_ON" (
         call _InitColors
     ) else if "%%a"=="DEBUG_ON" (
-        set _DEBUG_MODE_=%_TRUE_%
+        call _TrapMode _TRUE_
     )
 )
 
