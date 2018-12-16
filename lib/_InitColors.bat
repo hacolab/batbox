@@ -3,7 +3,9 @@ REM ----------------------------------------------------------------------
 REM - DESC ) Use color defines
 REM - REFS ) http://it-junkbox.cocolog-nifty.com/blog/2011/08/ms-dos-06fd.html
 REM ----------------------------------------------------------------------
-set _EN_COLOR_=1
+if not "%_INIT_COLOR_%"=="" exit /b
+
+set _INIT_COLOR_=1
 
 REM color index in batbox
 set _CF_BLACK=1
@@ -79,7 +81,10 @@ set _COLOR_CODE[%_CU_BLUE%]=[34;4m
 set _COLOR_CODE[%_CU_PURPLE%]=[35;4m
 set _COLOR_CODE[%_CU_AQUA%]=[36;4m
 set _COLOR_CODE[%_CU_WHITE%]=[37;4m
-set _COLOR_CODE[%_C_RESET%]=[0m
 
+REM reset color
+set _COLOR_CODE[%_C_RESET%]=[0m
 set _COLOR_RESET=[0m
+
+REM color code last index 
 set _COLOR_CODE.Len=33
