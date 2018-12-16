@@ -9,14 +9,15 @@ set COLOR_NAME[1]=RED
 set COLOR_NAME[2]=GREEN
 set COLOR_NAME[3]=YELLOW
 set COLOR_NAME[4]=BLUE
-set COLOR_NAME[5]=PUPLE
+set COLOR_NAME[5]=PURPLE
 set COLOR_NAME[6]=AQUA
 set COLOR_NAME[7]=WHITE
-set DECO_MODE[0]=FGCOLOR
-set DECO_MODE[1]=BGCOLOR
-set DECO_MODE[2]=FGaSTRG
-set DECO_MODE[3]=FGaUNDR
-set DECO_MODE[4]=RESET
+set DECO_MODE[0]=FC
+set DECO_MODE[1]=BC
+set DECO_MODE[2]=FS
+set DECO_MODE[3]=BS
+set DECO_MODE[4]=FU
+set DECO_MODE[5]=BU
 
 REM Test Data
 if "%~1"=="" (
@@ -37,16 +38,17 @@ exit /b
 REM Main Test Functions
 :DoTest
 echo LEN:%_COLOR_CODE.Len%
-for /l %%i in (1, 1, %_COLOR_CODE.Len%) do (
+set /a loopEnd=%_COLOR_CODE.Len%-1
+for /l %%i in (1, 1, %loopEnd%) do (
     call :GetColorName %%i colorName
-    call _CEcho %%i:!colorName! !colorName! %%i
-    call _CEcho "  Target:%~2 from %~1" "%~2" %%i
+    call _CEcho %%i:!colorName! !colorName!
+    call _CEcho "  Target:%~2 from %~1" "%~2" !colorName!
 )
-call _CEcho REDCOLOR COLOR 2
-echo normal echo
 
-call _CEcho REDCOLOR COLOR 2
-call _CEcho RESETCOLOR COLOR _C_RESET
+call _CEcho REDCOLOR COLOR FC_RED
+
+call _CEcho RESETCOLOR COLOR C_RESET
+
 exit /b
 
 REM Test Helper Functions
@@ -55,7 +57,7 @@ setlocal enabledelayedexpansion
 set /a idx=%1-1
 set /a nameIdx=%idx%%%8
 set /a modeIdx=%idx%/8
-set colorName=!COLOR_NAME[%nameIdx%]!_!DECO_MODE[%modeIdx%]!
+set colorName=!DECO_MODE[%modeIdx%]!_!COLOR_NAME[%nameIdx%]!
 REM echo %nameIdx%-%modeIdx% : %colorName%
 endlocal && set %2=%colorName%
 exit /b 0

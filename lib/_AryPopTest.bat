@@ -4,11 +4,11 @@ call _InitColors
 
 REM Test Main
 REM ----------------------------------------
-call _CEcho "[Made array elements]" %_CS_WHITE%
+call _CEcho "[Made array elements]" CS_WHITE
 call _AryNew TestAry 0 1 2 ABC DEFG
 call _AryEcho TestAry
 
-call _CEcho "[Poped array elements]" %_CS_WHITE%
+call _CEcho "[Poped array elements]" CS_WHITE
 call _AryPop TestAry popVal1
 call _AryPop TestAry popVal2 popVal3 popVal4
 call _AryEcho TestAry

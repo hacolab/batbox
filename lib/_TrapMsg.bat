@@ -2,13 +2,13 @@
 setlocal enabledelayedexpansion
 REM ----------------------------------------------------------------------
 REM - NAME   ) _TrapMsg
-REM - DESC   ) Print message when only debug mode(_DEBUG_MODE_=1)
+REM - DESC   ) Print message for stderr, only trap mode(_TRAP_MODE_=_ON)
 REM - USAGE  ) call _TrapMsg message
 REM - IN/OUT )
 REM -  IN   %1  : Trap message
 REM ----------------------------------------------------------------------
 :_TrapMsg
-if "%_DEBUG_MODE_%"=="%_TRUE_%" (
+if "%_TRAP_MODE_%"=="%_ON%" (
     echo %~1 >&2
 )
 exit /b

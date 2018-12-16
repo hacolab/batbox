@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 REM ----------------------------------------------------------------------
 REM - NAME   ) _TestProcTime
-REM - DESC   ) Measurement command processing time
+REM - DESC   ) Measurement command processing time, use powershell 'Measure-Command'
 REM - USAGE  ) call _TestProcTime message cmdName execCount
 REM - IN/OUT )
 REM -  IN   %1  : Message

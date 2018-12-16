@@ -6,7 +6,7 @@ REM Test Main
 REM ----------------------------------------
 call _AryNew TestAry hello world @batbox %1
 
-call _CEcho "[Made array elements]" %_CS_WHITE%
+call _CEcho "[Made array elements]" CS_WHITE
 call _AryEcho TestAry
 
 call _TestAssert TestAry[0] "" NewArrayTest

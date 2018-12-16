@@ -4,11 +4,11 @@ call _InitColors
 
 REM Test Main
 REM ----------------------------------------
-call _CEcho "[Made array elements]" %_CS_WHITE%
+call _CEcho "[Made array elements]" CS_WHITE
 call _AryNew TestAry 0 1 2
 call _AryEcho TestAry
 
-call _CEcho "[Pushed array elements]" %_CS_WHITE%
+call _CEcho "[Pushed array elements]" CS_WHITE
 call _AryPush TestAry 3
 call _AryPush TestAry
 call _AryPush TestAry 4 5 6 hey +

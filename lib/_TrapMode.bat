@@ -1,16 +1,15 @@
 @echo off
-REM setlocal enabledelayedexpansion
 REM ----------------------------------------------------------------------
 REM - NAME   ) _TrapMode
-REM - DESC   ) Print message "Name:Value" when only debug mode(_DEBUG_MODE_=1)
-REM - USAGE  ) call _TrapMode TrapOnOff
+REM - DESC   ) Set TrapMode On or Off
+REM - USAGE  ) call _TrapMode OnOff
 REM - IN/OUT )
-REM -  IN   %1  : Trap mode on or off (_TRUE_ or _FALSE_)
+REM -  IN   %1  : Set ON or OFF
 REM ----------------------------------------------------------------------
 :_TrapMode
-if "!%1!"=="%_TRUE_%" (
-   set _DEBUG_MODE_=%_TRUE_%
+if "%1"=="ON" (
+   set _TRAP_MODE_=%_ON%
 ) else (
-   set _DEBUG_MODE_=%_FALSE_%
+   set _TRAP_MODE_=%_OFF%
 )
 exit /b

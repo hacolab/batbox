@@ -2,14 +2,14 @@
 setlocal enabledelayedexpansion
 REM ----------------------------------------------------------------------
 REM - NAME   ) _TrapVal
-REM - DESC   ) Print Variable "Name:Value" when only debug mode(_DEBUG_MODE_=1)
+REM - DESC   ) Print "VarName:Value" for stderr, only debug mode(_TRAP_MODE_=_ON)
 REM - USAGE  ) call _TrapVal [message] VarName
 REM - IN/OUT )
 REM -  IN  [%1] : Header message
 REM -  IN   %2  : Variable name
 REM ----------------------------------------------------------------------
 :_TrapVal
-if "%_DEBUG_MODE_%"=="%_TRUE_%" (
+if "%_TRAP_MODE_%"=="%_ON%" (
     if "%~2"=="" (
         echo %1:!%1! >&2
     ) else (

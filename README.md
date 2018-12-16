@@ -119,34 +119,22 @@ This allows the array length to be used as it is for the end value of the for lo
 Array has elements and 'Len' property. it is array length
 
 ```
-call _NewAry Ary "Hello" "World"
-call _PushAry Ary "!"
-call _PopAry Ary LastElm
-call _DelAry Ary "Hello" "World"
+call _AryNey Ary "Hello" "World"
 
 or
 
-rem _NewAry
+REM _AryNew
 set Ary[1]="Hello"
 set Ary[2]="World"
 set Ary.Len=2
-
-rem _PushAry
-set Ary[3]="!"
-set /a Ary.Len=Ary.Len + 1
-
-rem _PopAry
-set LastElm=!Ary[%Ary.Len%]!
-set Ary[%Ary.Len%]=
-set /a Ary.Len=Ary.Len - 1
-
-rem _DelAry
-for /l %%i in (1, 1, %Ary.Len%) do set Ary[%%i]=
-Ary.Len=
 ```
 
 [use]
 ```
+call _AryPush Ary "!"
+call _AryPop Ary LastElm
+call _AryDel Ary "Hello" "World"
+
 call :EchoAry Ary
 
 ...
@@ -158,14 +146,29 @@ endlocal
 exit /b 0
 ```
 
+#### Symbol
+Symbol is just a string.  
+Why do we need symbols?  
+Because the number of times to typing '%' decreases.  
+These are used by several library functions.  
+
+[define]
+not defined, because that is just string
+
+[use]
+call _CEcho "Hello World" Hel CF_RED
+
+
 ### Naming Rule
+Symbol          ... SYMBOL_NAME (Not define, just a string)
+Lib Symbol      ... set _SYMBOL_NAME=0
 Global Constant ... set CONST_NAME=0
 Global Variable ... set VariableName=0
-Local Variable  ... set variableName=0
+Local Variable  ... set variableName=0 (only use in function)
 Global Proc TAG ... :GLOBAL_PROC_TAG  (use goto)
 Local Proc TAG  ... :local_goto_tag (use goto)
 Function TAG    ... :CallFuncTag (use call)
-Bat File Name   ... BatName.bat (use call)
+Bat File Name   ... BatName.bat
 Lib File Name   ... _LibName.bat (must start under score, avoid namespace problems)
 
 
