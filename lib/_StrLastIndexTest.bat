@@ -1,14 +1,15 @@
 @echo off
 setlocal enabledelayedexpansion
+call _InitColors
 
 REM Test Main
 REM ----------------------------------------
 set SrouceText="\C:\path\, dir\"
-call _NewAry TestData \ : "," " " + c
-call _NewAry TestExpect 0 2 9 10 -1 -1
+call _AryNew TestData \ : "," " " + c
+call _AryNew TestExpect 14 2 9 10 -1 -1
 
 for /l %%i in (1, 1, %TestData.Len%) do (
-    call _IndexOfChar %SrouceText% !TestData[%%i]! retIndex
+    call _StrLastIndex %SrouceText% !TestData[%%i]! retIndex
     call _TestAssert retIndex "!TestExpect[%%i]!" "!TestData[%%i]!"
 )
 
