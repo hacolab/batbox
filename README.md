@@ -156,7 +156,7 @@ These are used by several library functions.
 not defined, because that is just string
 
 [use]
-call _CEcho "Hello World" Hel CF_RED
+call _CEcho "Hello World" Hel FC_RED
 
 
 ### Naming Rule

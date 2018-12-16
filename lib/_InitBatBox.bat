@@ -1,7 +1,6 @@
 @echo off
 REM ----------------------------------------------------------------------
 REM - DESC ) Use color defines
-REM - REFS ) http://it-junkbox.cocolog-nifty.com/blog/2011/08/ms-dos-06fd.html
 REM ----------------------------------------------------------------------
 IF not "%_INIT_BATBOX_%"=="" exit /b
 set _INIT_BATBOX_=1
@@ -25,4 +24,4 @@ for %%a in (%*) do (
     )
 )
 
-REM color index in batbox
+exit /b
