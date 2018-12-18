@@ -3,77 +3,54 @@ setlocal enabledelayedexpansion
 REM ###########################################################################
 REM # [NAME]    : %~nx0
 REM # [VERSION] : 0.01
-REM # [USAGE]   : %~nx0 [/?]
+REM # [USAGE]   : %~nx0 [-h]
 REM # [DESCRIPTION]
 REM #  please write this batch script description...
-REM # 
+REM #
 REM # [PARAMS]
-REM #   %1      : 
-REM # 
+REM #   %1      :
+REM #
 REM # [OPTIONS]
-REM #   /?      : Show command help
-REM # 
+REM #   /h      : Show command help
+REM #
 REM ###########################################################################
 REM ======================================================================
 REM = Environment Configs
 REM ======================================================================
 set PATH=%~dp0..\lib;%PATH%
 
+REM init batbox
 call _InitBatBox DEBUG_ON COLOR_ON
 
-set ErrMsg=""
-
-
 REM ======================================================================
-REM = Check Command Params 
+REM = Check Command Params
 REM ======================================================================
+call _GetParams Opts Params "%*"
+
 REM  Options
 REM ----------------------------------------
 :ANALYZE_OPTIONS
-if "%~1"=="" goto :ANALYZE_PARAMS
-set ParamTemp=%~1
-set OptType=%ParamTemp:~1,1%
-if "%ParamTemp:~0,1%"=="/" (
-    if "%OptType%"=="?" (
-        goto :SHOW_HELP
-    ) else (
-        set ErrMsg='%OptType%' is Unknown Option
-        goto :SHOW_HELP
-    )
-    shift
-    goto :ANALYZE_OPTIONS
-)
+if not "%Opts[h]%"=="" goto :SHOW_HELP
 
 REM  Params
 REM ----------------------------------------
 :ANALYZE_PARAMS
-REM if not "%~1"=="" (
-REM     REM given param
-REM     call _TrapVal YourInputParam ParamTemp
-REM     call _TrapPauseNeq TrapPauseNeq ParamTemp OK
-REM     call _TrapPauseEq TrapPauseEq ParamTemp NG
-REM     REM call _CEcho hear %_CS_BLUE%
-REM )
-REM call _InitColors
-REM call _CEcho "[OK]Hello World" %~1 CS_GREEN
-REM call _CEcho "[OK]Hello World" CS_RED
-REM set param=%~1
-REM call _TestAssert param %~1
-for /f "usebackq tokens=* delims=" %%i in (`dir /s /b lib\*Test.bat`) do (
-    echo ===========================================================
-    echo FILE: %%i
-    echo ===========================================================
-    call %%i
-    echo .
-)
-
+echo Param Count: %Params.Len%
+call _AryEcho Params
 
 REM ======================================================================
 REM = Main Process
 REM ======================================================================
 :MAIN_PROCESS
-REM  
-REM ----------------------------------------
+echo Menu) q:Quit  h:Help  v:Version  b:Bell  c:ColorEcho  A:GoAdmin
+call _AcceptKey qhvbcA ">" key
+if "%key%"=="q" goto :EXIT_SUCCESS
+if "%key%"=="h" call _PrintHelp "%~f0"
+if "%key%"=="v" call _PrintVersion "%~f0"
+if "%key%"=="b" call _NotifyBell
+if "%key%"=="c" call _CEcho "hello world!!" FS_RED
+if "%key%"=="A" call _RestartWithAdmin "%~f0"
+goto :MAIN_PROCESS
 
 
 REM  Success process exit
@@ -88,5 +65,5 @@ REM ======================================================================
 REM  Print usage and exit
 REM ----------------------------------------
 :SHOW_HELP
-call _PrintHelp "%~dpnx0"
+call _PrintHelp "%~f0"
 goto :EXIT_SUCCESS
