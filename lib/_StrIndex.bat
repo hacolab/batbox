@@ -1,5 +1,5 @@
 @echo off
-REM setlocal enabledelayedexpansion
+setlocal enabledelayedexpansion
 REM ----------------------------------------------------------------------
 REM - NAME   ) _StrIndex
 REM - DESC   ) Set char found index in string, search start from left
@@ -23,7 +23,7 @@ if not "%s%"=="" (
         set ret=%i%
         goto :loop_end
     )
-    set /a i=!i!+1
+    set /a i=i+1
     set s=%s:~1%
     goto :loop
 )

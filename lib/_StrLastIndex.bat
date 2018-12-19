@@ -2,13 +2,13 @@
 setlocal enabledelayedexpansion
 REM ----------------------------------------------------------------------
 REM - NAME   ) _StrLastIndex
-REM - DESC   ) set char last found index in string, search start from left
+REM - DESC   ) Set char last found index in string, search start from left
 REM - USAGE  ) call _StrLastIndex SourceStr SearchChar FoundIndex
 REM - TODO!  ) Target char -> Target substr
 REM - IN/OUT )
 REM -  IN   %1  : Source string
 REM -  IN   %2  : Target char
-REM -  OUT  %3  : Out variable name, set found index, 
+REM -  OUT  %3  : Out variable name, set found index,
 REM -             start 0, if not found set -1
 REM ----------------------------------------------------------------------
 :_StrLastIndex
