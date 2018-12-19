@@ -5,7 +5,7 @@ REM # [NAME]    : %~nx0
 REM # [VERSION] : 0.01
 REM # [USAGE]   : %~nx0 [-h]
 REM # [DESCRIPTION]
-REM #  please write this batch script description...
+REM #  Batch script description...
 REM #
 REM # [PARAMS]
 REM #   %1      :
@@ -30,7 +30,7 @@ call _GetParams Opts Params "%*"
 REM  Options
 REM ----------------------------------------
 :ANALYZE_OPTIONS
-if not "%Opts[h]%"=="" goto :SHOW_HELP
+if defined Opts[h] goto :SHOW_HELP
 
 REM  Params
 REM ----------------------------------------
@@ -42,14 +42,15 @@ REM ======================================================================
 REM = Main Process
 REM ======================================================================
 :MAIN_PROCESS
+echo.
 echo Menu) q:Quit  h:Help  v:Version  b:Bell  c:ColorEcho  A:GoAdmin
 call _AcceptKey qhvbcA ">" key
-if "%key%"=="q" goto :EXIT_SUCCESS
-if "%key%"=="h" call _PrintHelp "%~f0"
-if "%key%"=="v" call _PrintVersion "%~f0"
-if "%key%"=="b" call _NotifyBell
-if "%key%"=="c" call _CEcho "hello world!!" FS_RED
-if "%key%"=="A" call _RestartWithAdmin "%~f0"
+if %key%==q goto :EXIT_SUCCESS
+if %key%==h call _PrintHelp "%~f0"
+if %key%==v call _PrintVersion "%~f0"
+if %key%==b call _NotifyBell
+if %key%==c call _CEcho "hello world" FS_RED
+if %key%==A call _RestartAdmin "%~f0"
 goto :MAIN_PROCESS
 
 
