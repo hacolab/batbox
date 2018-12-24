@@ -44,12 +44,22 @@ REM ======================================================================
 REM = Main Process
 REM ======================================================================
 :MAIN_PROCESS
-call _CEcho "hello world" FS_GREEN
+REM cls
+echo.
+echo Menu) q:Quit  h:Help  v:Version  b:Bell  c:ColorEcho  A:GoAdmin
+call _AcceptKey qbcA ">" key
+if %key%==q goto :EXIT_SUCCESS
+if %key%==b call _NotifyBell
+if %key%==c call _CEcho "hello world" FS_RED
+if %key%==A call _RestartAdmin "%~f0"
+goto :MAIN_PROCESS
+
 
 REM  Success process exit
 REM ----------------------------------------
 :EXIT_SUCCESS
 exit /b 0
+
 
 REM ======================================================================
 REM = Sub Process
