@@ -15,8 +15,8 @@
 - [Z] _StrLastIndex TODO:文字列検索への対応(今は１文字のみ検索)
 - [-] _StrCount
 - [C] _StrRepeate
-- [-] _StrUpper
-- [-] _StrLower
+- [C] _StrUpper
+- [C] _StrLower
 - [-] _StrReplace
 - [-] _StrSplit
 - [B] _StrSplitL
@@ -36,15 +36,20 @@
 - [-] _AryFilter
 
 [Path]
-- [-] _PathGetParent
+- [C] _PathGetParent
 - [C] _PathIsFile
 - [C] _PathIsDir
-- [-] _PathWalkDir
+- [C] _PathWalk
+- [C] _PathWalkFile
+- [C] _PathWalkDir
 
 [Useful]
 - [C] _AcceptKey
+- [C] _AcceptStr
+- [C] _AcceptAlpha
+- [C] _AcceptDec
 - [Z] _CEcho  TODO:色付きの部分文字列の大文字小文字区別
-- [-] _EachCmd
+- [D] _EachStdout
 - [-] _GetCmdOut
 - [C] _GetParams
 - [C] _GetDate

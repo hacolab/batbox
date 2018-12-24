@@ -1,26 +1,26 @@
 # BatBox
-========
+--------
 
-This is useful Windows *.bat scripts and libraries package.
-It is useful operate functions for string, array, path, debug, test etc...
-If your write *.bat scripts, this package's libraries may be make your happy.
-If your not write *.bat scripts, this package's scripts may be make your happy.
-Let's play in a strange new bat scripts world.
+This is useful Windows *.bat scripts and libraries package.  
+It is useful operate functions for string, array, path, debug, test etc...  
+If your write *.bat scripts, this package's libraries may be make your happy.  
+If your not write *.bat scripts, this package's scripts may be make your happy.  
+Let's play in a strange new bat scripts world.  
 
 ## Description
-Why are bat scripts now?
-Unfortunately, I work and should sometimes write bat scripts.
-I think that it is better not to use it if possible.
+Why are bat scripts now?  
+Unfortunately, I work and should sometimes write bat scripts.  
+I think that it is better not to use it if possible.  
 
-But bat script has merit as well.
+But bat script has merit as well.  
 
-1. It runs on defult Windows, which has the most users in the world!
-2. It is very easy to combine commands!
-3. I do not have it anymore.
+1. It runs on defult Windows, which has the most users in the world!  
+2. It is very easy to combine commands!  
+3. I do not have it anymore.  
 
-We want to focus on combining commands. This package help it.
+We want to focus on combining commands. This package help it.  
 
-Our Goal is to say that "That is in this box".
+Our Goal is to say "That is in this box".  
 
 ## Demo
 
@@ -74,11 +74,11 @@ Our Goal is to say that "That is in this box".
 ## Coding Rules and Parts of script provided by batbox
 ### Definition of the meaning of words.
 #### Command and script
-Command is *.exe or *.bat(main script).
-Script is *.bat script(include sub script).
+Command is *.exe or *.bat(main script).  
+Script is *.bat script(include sub script).  
 
 #### Process or Proc
-Process is use goto :TAG
+Process is use goto :TAG  
 
 [define]
 ```
@@ -93,7 +93,7 @@ goto :TAG_NAME
 ```
 
 #### Function or Func
-Function is use `call :TAG`.
+Function is use `call :TAG`.  
 
 [define]
 ```
@@ -111,13 +111,13 @@ echo %retBuf%
 ```
 
 #### Array
-Array is not exist normal bat world.
-But we can imitate it in a pseudo array.
-We treat it as starting from 1.
-This allows the array length to be used as it is for the end value of the for loop.
+Array is not exist normal bat world.  
+But we can imitate it in a pseudo array.  
+We treat it as starting from 1.  
+This allows the array length to be used as it is for the end value of the for loop.  
 
 [define]
-Array has elements and 'Len' property. it is array length
+Array has elements and 'Len' property. it is array length  
 
 ```
 call _AryNew Ary "Hello" "World"
@@ -148,29 +148,31 @@ exit /b 0
 ```
 
 #### Symbol
-Symbol is just a string.
-Why do we need symbols?
-Because the number of times to typing '%' decreases.
-These are used by several library functions.
+Symbol is just a string.  
+Why do we need symbols?  
+Because the number of times to typing '%' decreases.  
+These are used by several library functions.  
 
 [define]
-not defined, because that is just string
+not defined, because that is just string  
 
 [use]
-call _CEcho "Hello World" Hel FC_RED
+```
+call _CEcho "Hello World" Hel FC_RED  
+```
 
 
 ### Naming Rule
-Symbol          ... SYMBOL_NAME (Not define, just a string)
-Lib Symbol      ... set _SYMBOL_NAME=0
-Global Constant ... set CONST_NAME=0
-Global Variable ... set VariableName=0
-Local Variable  ... set variableName=0 (only use in function)
-Global Proc TAG ... :GLOBAL_PROC_TAG  (use goto)
-Local Proc TAG  ... :local_goto_tag (use goto)
-Function TAG    ... :CallFuncTag (use call)
-Bat File Name   ... BatName.bat
-Lib File Name   ... _LibName.bat (must start under score, avoid namespace problems)
+- Symbol          ... SYMBOL_NAME (Not define, just a string)
+- Lib Symbol      ... set _SYMBOL_NAME=0
+- Global Constant ... set CONST_NAME=0
+- Global Variable ... set VariableName=0
+- Local Variable  ... set variableName=0 (only use in function)
+- Global Proc TAG ... :GLOBAL_PROC_TAG  (use goto)
+- Local Proc TAG  ... :local_goto_tag (use goto)
+- Function TAG    ... :CallFuncTag (use call)
+- Bat File Name   ... BatName.bat
+- Lib File Name   ... _LibName.bat (must start under score, avoid namespace problems)
 
 
 ## The remaining problem for the time being

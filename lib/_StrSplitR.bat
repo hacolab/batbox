@@ -4,8 +4,8 @@ REM ----------------------------------------------------------------------
 REM - NAME   ) _StrSplitR
 REM - DESC   ) String split by target char, return 2 elements array
 REM - USAGE  ) call _StrSplitR SourceStr SepChar ArrName
-REM - Exmpl  ) call _StrSplitR "A:B:C" : R -> R[1]=A:B R[2]=C R.Len=2
-REM - Exmpl  ) call _StrSplitR "A:B:C" D R -> R[1]= R[2]= R.Len=0
+REM - EXMPL  ) call _StrSplitR "A:B:C" : R -> R[1]=A:B R[2]=C R.Len=2
+REM - EXMPL  ) call _StrSplitR "A:B:C" D R -> R[1]= R[2]= R.Len=0
 REM - IN/OUT )
 REM -  IN   %1  : Source string
 REM -  IN   %2  : Seperate char
@@ -25,7 +25,7 @@ REM if %2 is not found in %1
 if "%sepPos%"=="-1" (
     set length=0
     goto :func_exit
-) 
+)
 
 REM seperate string
 REM Left

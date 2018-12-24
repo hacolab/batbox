@@ -10,6 +10,7 @@ REM -  IN   %1  : Source string
 REM -  IN   %2  : Target char
 REM -  OUT  %3  : Out variable name, set found index,
 REM -             start 0, if not found set -1
+REM - ERRSTS ) 0:found char  1:not found char
 REM ----------------------------------------------------------------------
 :_StrLastIndex
 set i=0
@@ -26,6 +27,10 @@ if not "%s%"=="" (
     set s=%s:~1%
     goto :loop
 )
-REM echo !%3!
-endlocal && set %~3=%ret%
-exit /b 0
+if %ret%==-1 (
+    endlocal && set %~3=%ret%
+    exit /b 1
+) else (
+    endlocal && set %~3=%ret%
+    exit /b 0
+)

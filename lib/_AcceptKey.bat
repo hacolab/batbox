@@ -6,9 +6,10 @@ REM - DESC   ) Accept user press key
 REM - USAGE  ) call _AcceptKey abBc "Prompt>" KeyValName
 REM -          if user press key is 'B', set B to KeyValName
 REM - IN/OUT )
-REM -  IN   %1  : accept keys (case-sensitive)
-REM -  IN   %2  : print message
-REM -  OUT  %3  : user press key charator
+REM -  IN   %1  : Accept keys (case-sensitive)
+REM -  IN   %2  : Print message
+REM -  OUT  %3  : User press key charator
+REM - ERRSTS ) 0:allways
 REM ----------------------------------------------------------------------
 :_AcceptKey
 set keys=%~1
