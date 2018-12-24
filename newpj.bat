@@ -82,14 +82,15 @@ REM Make new project files
 REM ----------------------------------------
 echo.
 mkdir %NewPJDir%
+set MainScript=%NewPJDir%Main.bat
 for /f "usebackq skip=2 tokens=1* delims=]" %%a in (`find /n /v "" %TemplateDir%!Template[%PJType%]!`) do (
     set line=%%b
     if not "!line!"=="" (
         set line=!line:@SRCDIR@=%%~dp0..\src\%NewPJName%!
     )
-    echo.!line!>> %NewPJDir%main.bat
+    echo.!line!>> %MainScript%
 )
-mklink /h %CmdRoot%%NewPJName%.bat %NewPJDir%main.bat
+mklink /h %CmdRoot%%NewPJName%.bat %MainScript%
 
 echo.
 call _CEcho "complete make new project." FC_CYAN

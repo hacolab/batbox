@@ -27,8 +27,11 @@ Our Goal is to say "That is in this box".
 ## Requirement
 ### batbox/lib/*.bat
 - standard dos commands
+- powershell (_RestartAdmin.bat)
+- user32.dll (_NotifyBell.bat)
 
 ### cmd/*
+- newpj.bat  ... new batbox project. make project dirctory and copy template file, make hardlink to cmd/*.
 
 ## Directory Layout
 ```
@@ -49,8 +52,8 @@ Our Goal is to say "That is in this box".
     |       +-- Main.bat  ... command main script. need file name is 'Main.bat'
     |
     +-- cmd ... they are make and update by mkcmdlink.bat
-    |   +-- CmdName1.bat.lnk ... symbolic link for CmdName1 main script.
-    |   +-- CmdName2.bat.lnk ... symbolic link for CmdName2 main script.
+    |   +-- CmdName1.bat ... hard link for CmdName1 main script.
+    |   +-- CmdName2.bat ... hard link for CmdName2 main script.
     |   |
     |   +-- _config ... if necessary, put commands config files
     |   |   |
@@ -116,7 +119,7 @@ But we can imitate it in a pseudo array.
 We treat it as starting from 1.  
 This allows the array length to be used as it is for the end value of the for loop.  
 
-[define]
+[define]  
 Array has elements and 'Len' property. it is array length  
 
 ```
@@ -153,7 +156,7 @@ Why do we need symbols?
 Because the number of times to typing '%' decreases.  
 These are used by several library functions.  
 
-[define]
+[define]  
 not defined, because that is just string  
 
 [use]

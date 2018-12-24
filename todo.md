@@ -56,7 +56,7 @@
 - [C] _GetTime
 - [C] _NotifyBell
 - [C] _IsAdmin
-- [C] _RestartByAdmin
+- [C] _RestartAdmin
 - [-] _ReadConfigs
 
 [Test]
@@ -73,5 +73,5 @@
 
 
 # BatBox Management Tools
-- [-] MakeNewCmd
+- [C] MakeNewCmd
 - [-] RunTestScript
