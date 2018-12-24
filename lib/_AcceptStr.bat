@@ -17,8 +17,9 @@ if "%~3"=="" (
     exit /b 0
 )
 
+set pattern=%~1
 set /p inputStr="%~2"
-echo %inputStr%| findstr /r "%~1" >nul 2>&1
+echo %inputStr%| findstr /r "%pattern%" >nul 2>&1
 if errorlevel 1 (
     endlocal && set %~3=%inputStr%
     exit /b 1
