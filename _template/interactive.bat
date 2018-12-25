@@ -18,10 +18,29 @@ REM ###########################################################################
 REM ======================================================================
 REM = Environment Configs
 REM ======================================================================
-set PATH=@SRCDIR@;%~dp0..\lib;%PATH%
+REM set directories
+set BATBOX_ROOT=%~dp0..\
+set CMD_DIR=%BATBOX_ROOT%cmd\
+set BIN_DIR=%BATBOX_ROOT%bin\
+set LIB_DIR=%BATBOX_ROOT%lib\
+set SRC_DIR=%BATBOX_ROOT%src\@SRCDIR@
+set CONFIG_DIR=%CMD_DIR%_config\@SRCDIR@
+set CACHE_DIR=%CMD_DIR%_cache\@SRCDIR@
+set TEMP_DIR=%CMD_DIR%_temp\@SRCDIR@
 
+REM append path
+set PATH=%LIB_DIR%;%SRC_DIR%;%BIN_DIR%;%PATH%
+
+REM ======================================================================
+REM = Initalization
+REM ======================================================================
 REM init batbox
 call _InitBatBox DEBUG_ON COLOR_ON
+
+REM make use directories
+if not exist "%CONFIG_DIR%" mkdir "%CONFIG_DIR%" >nul 2>&1
+if not exist "%CACHE_DIR%"  mkdir "%CACHE_DIR%"  >nul 2>&1
+if not exist "%TEMP_DIR%"   mkdir "%TEMP_DIR%"   >nul 2>&1
 
 REM ======================================================================
 REM = Check Command Params
@@ -46,14 +65,13 @@ REM ======================================================================
 :MAIN_PROCESS
 REM cls
 echo.
-echo Menu) q:Quit  h:Help  v:Version  b:Bell  c:ColorEcho  A:GoAdmin
+echo Menu) q:Quit  b:Bell  c:ColorEcho  A:GoAdmin
 call _AcceptKey qbcA ">" key
-if %key%==q goto :EXIT_SUCCESS
+if %key%==q call :ASK_QUIT && goto :EXIT_SUCCESS
 if %key%==b call _NotifyBell
 if %key%==c call _CEcho "hello world" FS_RED
 if %key%==A call _RestartAdmin "%~f0"
 goto :MAIN_PROCESS
-
 
 REM  Success process exit
 REM ----------------------------------------
@@ -75,3 +93,15 @@ REM ----------------------------------------
 :SHOW_VERSION
 call _PrintVersion "%~f0"
 goto :EXIT_SUCCESS
+
+
+REM ======================================================================
+REM = functions
+REM ======================================================================
+REM  Ask quit sciprt
+REM ----------------------------------------
+:ASK_QUIT
+setlocal
+call _AcceptKey yn "Do you want to quit?(y/n)>" yesno
+if %yesno%==y exit /b 0
+exit /b 1

@@ -18,10 +18,29 @@ REM ###########################################################################
 REM ======================================================================
 REM = Environment Configs
 REM ======================================================================
-set PATH=@SRCDIR@;%~dp0..\lib;%PATH%
+REM set directories
+set BATBOX_ROOT=%~dp0..\
+set CMD_DIR=%BATBOX_ROOT%cmd\
+set BIN_DIR=%BATBOX_ROOT%bin\
+set LIB_DIR=%BATBOX_ROOT%lib\
+set SRC_DIR=%BATBOX_ROOT%src\@SRCDIR@
+set CONFIG_DIR=%CMD_DIR%_config\@SRCDIR@
+set CACHE_DIR=%CMD_DIR%_cache\@SRCDIR@
+set TEMP_DIR=%CMD_DIR%_temp\@SRCDIR@
 
+REM append path
+set PATH=%LIB_DIR%;%SRC_DIR%;%BIN_DIR%;%PATH%
+
+REM ======================================================================
+REM = Initalization
+REM ======================================================================
 REM init batbox
 call _InitBatBox DEBUG_ON COLOR_ON
+
+REM make use directories
+if not exist "%CONFIG_DIR%" mkdir "%CONFIG_DIR%" >nul 2>&1
+if not exist "%CACHE_DIR%"  mkdir "%CACHE_DIR%"  >nul 2>&1
+if not exist "%TEMP_DIR%"   mkdir "%TEMP_DIR%"   >nul 2>&1
 
 REM ======================================================================
 REM = Check Command Params

@@ -3,7 +3,7 @@ setlocal enabledelayedexpansion
 REM ###########################################################################
 REM # [NAME]    : %~nx0
 REM # [VERSION] : 0.01
-REM # [USAGE]   : %~nx0 [/h]
+REM # [USAGE]   : %~nx0 [/h][/v]
 REM # [DESCRIPTION]
 REM #  Make new batbox project
 REM #
@@ -86,7 +86,7 @@ set MainScript=%NewPJDir%Main.bat
 for /f "usebackq skip=2 tokens=1* delims=]" %%a in (`find /n /v "" %TemplateDir%!Template[%PJType%]!`) do (
     set line=%%b
     if not "!line!"=="" (
-        set line=!line:@SRCDIR@=%%~dp0..\src\%NewPJName%!
+        set line=!line:@SRCDIR@=%NewPJName%\!
     )
     echo.!line!>> %MainScript%
 )
